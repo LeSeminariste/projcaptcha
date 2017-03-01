@@ -7,16 +7,6 @@ from random import randint
 import datetime
 import numpy as np
 
-#pas sure
-'''
-from matplotlib import pyplot as plt
-import matplotlib.image as mpimg
-'''
-'''
-from mnist import MNIST
-mndata = MNIST('samples')
-'''
-
 #Importer La base de tensorflow et les datasets
 #mnist, là ou sera stocker nos données de training, test, etc.
 from tensorflow.examples.tutorials.mnist import input_data
