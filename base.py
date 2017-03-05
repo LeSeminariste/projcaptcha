@@ -6,6 +6,7 @@ import sys
 from random import randint
 import datetime
 import numpy as np
+import cv2
 
 #Importer La base de tensorflow et les datasets
 #mnist, là ou sera stocker nos données de training, test, etc.
@@ -22,7 +23,7 @@ sess = tf.InteractiveSession()
 x = tf.placeholder(tf.float32, shape=[None, 784])
 y_ = tf.placeholder(tf.float32, shape=[None, 10])
 
-#on a des variables, de ce fait le model peut les utiliser et les changer au fur et à mesure initialisé à Zero :)
+#on a des variables, de ce fait le model peut les utiliser et les changer au fur et à mesure initialisé à Zero
 #w le weight, le poids en couleur
 #b represente le bias
 W = tf.Variable(tf.zeros([784,10])) #Parcequ'on a de base 784 et on veut du 10
@@ -36,6 +37,7 @@ y = tf.matmul(x,W) + b
 
 #Calcule le loss: la différence entre la prédiction et le réel
 #Prends la Moyenne du resultat du softmax
+#Loss indicates how bad the model's prediction was on a single example
 cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
 
 #Partie training: utilisation du Gradient pour optimizer et réduire le loss
@@ -74,7 +76,7 @@ images, labels = mndata.load_testing()
 print(mndata.display(images[num]))
 
 #PART2
-'''
+
 #2: Using our model to classify MNIST digit from a custom image:
 
 # create an an array where we can store 1 picture
@@ -108,9 +110,19 @@ images[0] = flatten
 
 my_classification = sess.run(tf.argmax(y, 1), feed_dict={x: [images[0]]})
 
+
 """
 we want to run the prediction and the accuracy function
 using our generated arrays (images and correct_vals)
 """
 print 'Neural Network predicted', my_classification[0], "for your digit"
-'''
+
+"""
+nb = 784
+i=0
+
+while i<784:
+	print(
+	i += 1
+"""
+#print(mndata.display(flatten))
